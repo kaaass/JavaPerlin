@@ -76,16 +76,7 @@ public class RandomGenerator {
 	 * @return A float random value between [0.0,1.0)
 	 */
 	public static float randomWH(int x, int y) {
-		x += y * 57;
-		int[] seed = new int[3];
-		for (int i = 0; i <= Math.abs(x); i++) {
-			seed[0] = (171 * seedWH[0]) % 30269;
-			seed[1] = (172 * seedWH[1]) % 30307;
-			seed[2] = (170 * seedWH[2]) % 30323;
-		}
-		return (x / Math.abs(x))
-				* (seed[0] / 30269.0F + seed[1] / 30307.0F + seed[2] / 30323.0F)
-				% 1.0F;
+		return (randomWH(x) + randomWH(y)) / 2;
 	}
 
 	/**
@@ -98,8 +89,7 @@ public class RandomGenerator {
 	 * @return A float random value between [0.0,1.0)
 	 */
 	public static float randomRSA(int x, int y) {
-		x += y * 57;
-		return (float) (x * Math.exp(seedRSA[0]) % seedRSA[1] / seedRSA[1]);
+		return (randomRSA(x) + randomRSA(y)) / 2;
 	}
 
 	/**
@@ -128,7 +118,6 @@ public class RandomGenerator {
 	 * @return A float random value between [0.0,1.0)
 	 */
 	public static float randomJava(int x, int y) {
-		x += y * 57;
-		return (float) (new java.util.Random(x).nextDouble() * 2 - 1);
+		return (randomJava(x) + randomJava(y)) / 2;
 	}
 }
