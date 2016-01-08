@@ -43,6 +43,14 @@ public class Main {
 		}
 		System.out.println("Testing randomJava() completed, using time: "
 				+ (System.currentTimeMillis() - t) + " ms.\n");
+		// ===
+		t = System.currentTimeMillis();
+		System.out.println("Start testing randomDoNet().");
+		for (int i = 1; i <= 10000; i++) {
+			RandomGenerator.randomDoNet(i);
+		}
+		System.out.println("Testing randomDoNet() completed, using time: "
+				+ (System.currentTimeMillis() - t) + " ms.\n");
 		// =======
 		t = System.currentTimeMillis();
 		System.out.println("Start testing perlin(x).");

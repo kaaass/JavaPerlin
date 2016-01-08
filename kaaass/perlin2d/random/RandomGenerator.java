@@ -2,7 +2,7 @@ package kaaass.perlin2d.random;
 
 public class RandomGenerator {
 	private static int[] seedWH = { 13, 97, 223 };
-	private static int[] seedRSA = { 77, 32771 };
+	private static int[] seedRSA = { 26, 20011 };
 
 	/*
 	 * x input
@@ -61,6 +61,17 @@ public class RandomGenerator {
 	public static float randomJava(int x) {
 		return (float) (new java.util.Random(x).nextDouble() * 2 - 1);
 	}
+	
+	/**
+	 * This is a method of doNet random number generator.
+	 * 
+	 * @param x
+	 *            A seed for generator.
+	 * @return A float random value between [0.0,1.0)
+	 */
+	public static float randomDoNet(int x) {
+		return (float) new DotNetRandom(x).rand();
+	}
 
 	/*
 	 * x-y input
@@ -118,6 +129,20 @@ public class RandomGenerator {
 	 * @return A float random value between [0.0,1.0)
 	 */
 	public static float randomJava(int x, int y) {
-		return (randomJava(x) + randomJava(y)) / 2;
+		return (float) (new java.util.Random(x).nextDouble()
+				+ new java.util.Random(y).nextDouble() - 1);
+	}
+	
+	/**
+	 * This is a method of doNet random number generator.
+	 * 
+	 * @param x
+	 *            A seed for generator.
+	 * @param y
+	 *            A seed for generator.
+	 * @return A float random value between [0.0,1.0)
+	 */
+	public static float randomDoNet(int x, int y) {
+		return (randomDoNet(x) + randomDoNet(y)) / 2;
 	}
 }
