@@ -1,7 +1,6 @@
 package kaaass.perlin2d.random;
 
 public class RandomGenerator {
-	private static int[] seedWH = { 13, 97, 223 };
 	private static int[] seedRSA = { 26, 20011 };
 
 	/*
@@ -15,13 +14,11 @@ public class RandomGenerator {
 	 *            A seed for generator.
 	 * @return A float random value between [0.0,1.0)
 	 */
-	public static float randomWH(int x) {
+	public static float randomWH(java.lang.Integer x) {
 		int[] seed = new int[3];
-		for (int i = 0; i <= Math.abs(x); i++) {
-			seed[0] = (171 * seedWH[0]) % 30269;
-			seed[1] = (172 * seedWH[1]) % 30307;
-			seed[2] = (170 * seedWH[2]) % 30323;
-		}
+		seed[0] = (171 * x) % 30269;
+		seed[1] = (172 * x) % 30307;
+		seed[2] = (170 * x) % 30323;
 		return (x / Math.abs(x))
 				* (seed[0] / 30269.0F + seed[1] / 30307.0F + seed[2] / 30323.0F)
 				% 1.0F;
@@ -34,7 +31,7 @@ public class RandomGenerator {
 	 *            A seed for generator.
 	 * @return A float random value between [0.0,1.0)
 	 */
-	public static float randomRSA(int x) {
+	public static float randomRSA(java.lang.Integer x) {
 		return (float) (x * Math.exp(seedRSA[0]) % seedRSA[1] / seedRSA[1]);
 	}
 
@@ -45,7 +42,7 @@ public class RandomGenerator {
 	 *            A seed for generator.
 	 * @return A float random value between [0.0,1.0)
 	 */
-	public static float randomBasic(int x) {
+	public static float randomBasic(java.lang.Integer x) {
 		x = (x << 13) ^ x;
 		return (float) (1.0 - Float.floatToIntBits((x
 				* (x * x * 15731 + 789221) + 1376312589) & 0x7fffffff) / 1073741824.0);
@@ -58,7 +55,7 @@ public class RandomGenerator {
 	 *            A seed for generator.
 	 * @return A float random value between [0.0,1.0)
 	 */
-	public static float randomJava(int x) {
+	public static float randomJava(java.lang.Integer x) {
 		return (float) (new java.util.Random(x).nextDouble() * 2 - 1);
 	}
 	
@@ -69,7 +66,7 @@ public class RandomGenerator {
 	 *            A seed for generator.
 	 * @return A float random value between [0.0,1.0)
 	 */
-	public static float randomDoNet(int x) {
+	public static float randomDoNet(java.lang.Integer x) {
 		return (float) new DotNetRandom(x).rand();
 	}
 
@@ -86,8 +83,14 @@ public class RandomGenerator {
 	 *            A seed for generator.
 	 * @return A float random value between [0.0,1.0)
 	 */
-	public static float randomWH(int x, int y) {
-		return (randomWH(x) + randomWH(y)) / 2;
+	public static float randomWH(java.lang.Integer x, java.lang.Integer y) {
+		int[] seed = new int[3];
+		seed[0] = (171 * x) % 30269;
+		seed[1] = (172 * y) % 30307;
+		seed[2] = (170 * x) % 30323;
+		return (x / Math.abs(x))
+				* (seed[0] / 30269.0F + seed[1] / 30307.0F + seed[2] / 30323.0F)
+				% 1.0F;
 	}
 
 	/**
@@ -99,7 +102,7 @@ public class RandomGenerator {
 	 *            A seed for generator.
 	 * @return A float random value between [0.0,1.0)
 	 */
-	public static float randomRSA(int x, int y) {
+	public static float randomRSA(java.lang.Integer x, java.lang.Integer y) {
 		return (randomRSA(x) + randomRSA(y)) / 2;
 	}
 
@@ -112,7 +115,7 @@ public class RandomGenerator {
 	 *            A seed for generator.
 	 * @return A float random value between [0.0,1.0)
 	 */
-	public static float randomBasic(int x, int y) {
+	public static float randomBasic(java.lang.Integer x, java.lang.Integer y) {
 		x += y * 57;
 		x = (x << 13) ^ x;
 		return (float) (1.0 - Float.floatToIntBits((x
@@ -128,7 +131,7 @@ public class RandomGenerator {
 	 *            A seed for generator.
 	 * @return A float random value between [0.0,1.0)
 	 */
-	public static float randomJava(int x, int y) {
+	public static float randomJava(java.lang.Integer x, java.lang.Integer y) {
 		return (float) (new java.util.Random(x).nextDouble()
 				+ new java.util.Random(y).nextDouble() - 1);
 	}
@@ -142,7 +145,7 @@ public class RandomGenerator {
 	 *            A seed for generator.
 	 * @return A float random value between [0.0,1.0)
 	 */
-	public static float randomDoNet(int x, int y) {
+	public static float randomDoNet(java.lang.Integer x, java.lang.Integer y) {
 		return (randomDoNet(x) + randomDoNet(y)) / 2;
 	}
 }
