@@ -1,9 +1,9 @@
 package kaaass.perlin2d.random;
 
 /**
- * This is a random generator which translated from doNet.
+ * This is a random generator which translated from dotNet.
  * 
- * @author doNet, KAAAsS(Translate)
+ * @author dotNet, KAAAsS(Translate)
  *
  */
 class DotNetRandom {

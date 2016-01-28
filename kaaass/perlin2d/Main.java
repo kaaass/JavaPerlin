@@ -9,7 +9,7 @@ import kaaass.perlin2d.random.RandomGenerator;
 public class Main {
 
 	public static void main(String[] args) {
-		testRandom("randomWH");
+		testRandom("randomDoNet");
 	}
 
 	public static void test() {
@@ -109,11 +109,11 @@ public class Main {
 			m = RandomGenerator.class.getMethod(method, Integer.class);
 			String s1 = "";
 			String s2 = "";
-			for (int i = 1; i <= 1000; i++) {
+			for (int i = 1; i <= 50; i++) {
 				if (s1.equals("")) {
-					s1 = String.valueOf((float) i / 100);
+					s1 = String.valueOf(i);
 				} else {
-					s1 = s1 + "," + String.valueOf((float) i / 100);
+					s1 = s1 + "," + String.valueOf(i);
 				}
 				if (s2.equals("")) {
 					s2 = "" + (float) m.invoke(obj, i);
